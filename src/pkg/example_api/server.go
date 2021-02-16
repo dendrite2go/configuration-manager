@@ -27,22 +27,6 @@ type GreeterServer struct {
 	clientInfo *axon_server.ClientIdentification
 }
 
-func (s *GreeterServer) Greet(_ context.Context, greeting *grpc_example.Greeting) (*grpc_example.Acknowledgement, error) {
-	message := (*greeting).Message
-	log.Printf("Server: Received greeting: %v", message)
-	ack := grpc_example.Acknowledgement{
-		Message: "Good day to you too!",
-	}
-	command := grpc_example.GreetCommand{
-		AggregateIdentifier: "single_aggregate",
-		Message:             greeting,
-	}
-	if e := axon_utils.SendCommand("GreetCommand", &command, toClientConnection(s)); e != nil {
-		return nil, e
-	}
-	return &ack, nil
-}
-
 func (s *GreeterServer) Authorize(_ context.Context, credentials *grpc_example.Credentials) (*grpc_example.AccessToken, error) {
 	accessToken := grpc_example.AccessToken{
 		Jwt: "",
