@@ -10,10 +10,10 @@ source "${BIN}/verbose.sh"
 
 source "${SRC}/etc/settings-local.sh"
 
-docker build --tag "${DOCKER_REPOSITORY}/archetype-go-axon:latest" "${SRC}/docker"
-
 if [ -f "${PROJECT}/target/bin/example" ]
 then
-  docker build --tag "${DOCKER_REPOSITORY}/config-manager:latest" \
+  docker build --tag "${DOCKER_REPOSITORY}/config-manager:${IMAGE_VERSION}" \
     -f "${PROJECT}/src/docker/Dockerfile-config-manager" "${PROJECT}/target"
+else
+  info "WARNING: Skipped build of docker image!"
 fi
