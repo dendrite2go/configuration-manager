@@ -1,7 +1,7 @@
 version: '3.7'
 
 networks:
-  example:
+  ${ENSEMBLE_NAME}:
     driver: overlay
 
 services:
@@ -9,7 +9,7 @@ services:
     image: axoniq/axonserver:${AXON_VERSION}
     init: true
     networks:
-    - example
+    - ${ENSEMBLE_NAME}
     ports:
     - target: 8024
       published: ${AXON_SERVER_PORT}
@@ -25,15 +25,15 @@ services:
       type: volume
       source: axon-eventdata
       target: /eventdata
-  example-command-api:
+  command-api:
     image: ${DOCKER_REPOSITORY}/archetype-go-axon
     working_dir: ${PROJECT}
     command:
       - "target/bin/example"
     init: true
-    hostname: example
+    hostname: command-api
     networks:
-    - example
+    - ${ENSEMBLE_NAME}
     ports:
     - target: 8181
       published: ${API_SERVER_PORT}
@@ -44,48 +44,23 @@ services:
         source: ${NIX_STORE_VOLUME}
         target: /nix/store
       #${EXTRA_VOLUMES}
-  example-present:
-    image: ${DOCKER_REPOSITORY}/example-present:${EXAMPLE_IMAGE_VERSION}${PRESENT_SUFFIX}
-    networks:
-      - example
-    expose:
-      - "3000"
-    depends_on:
-      - axon-server
-    #${PRESENT_VOLUMES}
   proxy:
-    image: ${DOCKER_REPOSITORY}/example-proxy:${EXAMPLE_IMAGE_VERSION}
+    image: ${DOCKER_REPOSITORY}/proxy:${IMAGE_VERSION}
     networks:
-      - example
+      - ${ENSEMBLE_NAME}
     ports:
       - target: 80
         published: ${UI_SERVER_PORT}
     depends_on:
-      - example-command-api
+      - command-api
       - axon-server
   grpc-swagger:
     image: ${DOCKER_REPOSITORY}/grpc-swagger
     networks:
-      - example
+      - ${ENSEMBLE_NAME}
     ports:
       - target: '8080'
         published: '8123'
-  elastic-search:
-    image: elasticsearch:${ELASTIC_SEARCH_VERSION}
-    init: true
-    networks:
-      - example
-    ports:
-    - target: '9200'
-      published: '9200'
-    - target: '9300'
-      published: '9300'
-    environment:
-      - "discovery.type=single-node"
-    volumes:
-      - type: volume
-        source: elastic-search-data
-        target: /usr/share/elasticsearch/data
 
 volumes:
   axon-data:

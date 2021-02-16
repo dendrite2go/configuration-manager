@@ -18,7 +18,6 @@ import (
 	cache_utils "github.com/dendrite2go/archetype-go-axon/src/pkg/cache_utils"
 	example_api "github.com/dendrite2go/archetype-go-axon/src/pkg/example_api"
 	example_command "github.com/dendrite2go/archetype-go-axon/src/pkg/example_command"
-	example_query "github.com/dendrite2go/archetype-go-axon/src/pkg/example_query"
 	example_trusted "github.com/dendrite2go/archetype-go-axon/src/pkg/trusted"
 )
 
@@ -60,15 +59,8 @@ func main() {
 	defer utils.ReportError("Close commandHandlerConn", commandHandlerConn.Connection.Close)
 
 	// Process Events
-	eventProcessorConn := example_query.ProcessEvents(host, port)
-	defer utils.ReportError("Close eventProcessorConn", eventProcessorConn.Connection.Close)
-
 	configurationEventProcessorConn := configuration_query.ProcessEvents(host, port)
 	defer utils.ReportError("Close configurationEventProcessorConn", configurationEventProcessorConn.Connection.Close)
-
-	// Handle queries
-	queryHandlerConn := example_query.HandleQueries(host, port)
-	defer utils.ReportError("Close queryHandlerConn", queryHandlerConn.Connection.Close)
 
 	// Listen to incoming gRPC requests
 	_ = axon_utils.Serve(clientConnection, registerWithServer)

@@ -28,7 +28,7 @@ static_resources:
                               - name: Content-Type
                                 exact_match : application/grpc-web-text
                           route:
-                            host_rewrite: example-command-api
+                            host_rewrite: command-api
                             cluster: service_core
                             max_grpc_timeout: 0s
                             cors:
@@ -42,13 +42,8 @@ static_resources:
                             prefix: "/"
                             grpc: {}
                           route:
-                            host_rewrite: example-command-api
+                            host_rewrite: command-api
                             cluster: service_core
-                        - match:
-                            prefix: "/"
-                          route:
-                            host_rewrite: example-present
-                            cluster: service_present
                 http_filters:
                   - name: envoy.cors
                   - name: envoy.grpc_web
@@ -83,20 +78,6 @@ static_resources:
                   - name: envoy.grpc_web
                   - name: envoy.router
   clusters:
-    - name: service_present
-      connect_timeout: 0.25s
-      type: LOGICAL_DNS
-      dns_lookup_family: V4_ONLY
-      lb_policy: ROUND_ROBIN
-      load_assignment:
-        cluster_name: service_present
-        endpoints:
-          - lb_endpoints:
-              - endpoint:
-                  address:
-                    socket_address:
-                      address: example-present
-                      port_value: 3000
     - name: service_axon
       connect_timeout: 0.25s
       type: LOGICAL_DNS
@@ -125,7 +106,7 @@ static_resources:
               - endpoint:
                   address:
                     socket_address:
-                      address: example-command-api
+                      address: command-api
                       port_value: 8181
 
 admin:

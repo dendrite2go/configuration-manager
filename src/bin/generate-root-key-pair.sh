@@ -17,7 +17,7 @@ if type nix-env >/dev/null 2>&1
 then
   :
 else
-  exec docker run --rm -v "${PROJECT}:${PROJECT}" -w "${BIN}" "${DOCKER_REPOSITORY}/build-protoc" "$0" "$@"
+  exec docker run --rm -v "${PROJECT}:${PROJECT}" -w "$(pwd)" "${DOCKER_REPOSITORY}/build-protoc" "$0" "$@"
   # Unreachable
   exit "$?"
 fi

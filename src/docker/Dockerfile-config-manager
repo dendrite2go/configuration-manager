@@ -1,0 +1,5 @@
+FROM dendrite2go/archetype-go-axon
+
+COPY bin/example /opt/example
+
+CMD /opt/example

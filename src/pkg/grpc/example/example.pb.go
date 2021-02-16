@@ -24,84 +24,6 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type Greeting struct {
-	Message              string   `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *Greeting) Reset()         { *m = Greeting{} }
-func (m *Greeting) String() string { return proto.CompactTextString(m) }
-func (*Greeting) ProtoMessage()    {}
-func (*Greeting) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{0}
-}
-
-func (m *Greeting) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Greeting.Unmarshal(m, b)
-}
-func (m *Greeting) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Greeting.Marshal(b, m, deterministic)
-}
-func (m *Greeting) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Greeting.Merge(m, src)
-}
-func (m *Greeting) XXX_Size() int {
-	return xxx_messageInfo_Greeting.Size(m)
-}
-func (m *Greeting) XXX_DiscardUnknown() {
-	xxx_messageInfo_Greeting.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Greeting proto.InternalMessageInfo
-
-func (m *Greeting) GetMessage() string {
-	if m != nil {
-		return m.Message
-	}
-	return ""
-}
-
-type Acknowledgement struct {
-	Message              string   `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *Acknowledgement) Reset()         { *m = Acknowledgement{} }
-func (m *Acknowledgement) String() string { return proto.CompactTextString(m) }
-func (*Acknowledgement) ProtoMessage()    {}
-func (*Acknowledgement) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{1}
-}
-
-func (m *Acknowledgement) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Acknowledgement.Unmarshal(m, b)
-}
-func (m *Acknowledgement) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Acknowledgement.Marshal(b, m, deterministic)
-}
-func (m *Acknowledgement) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Acknowledgement.Merge(m, src)
-}
-func (m *Acknowledgement) XXX_Size() int {
-	return xxx_messageInfo_Acknowledgement.Size(m)
-}
-func (m *Acknowledgement) XXX_DiscardUnknown() {
-	xxx_messageInfo_Acknowledgement.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Acknowledgement proto.InternalMessageInfo
-
-func (m *Acknowledgement) GetMessage() string {
-	if m != nil {
-		return m.Message
-	}
-	return ""
-}
-
 type Empty struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -112,7 +34,7 @@ func (m *Empty) Reset()         { *m = Empty{} }
 func (m *Empty) String() string { return proto.CompactTextString(m) }
 func (*Empty) ProtoMessage()    {}
 func (*Empty) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{2}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{0}
 }
 
 func (m *Empty) XXX_Unmarshal(b []byte) error {
@@ -133,131 +55,6 @@ func (m *Empty) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Empty proto.InternalMessageInfo
 
-type GreetCommand struct {
-	AggregateIdentifier  string    `protobuf:"bytes,1,opt,name=aggregateIdentifier,proto3" json:"aggregateIdentifier,omitempty"`
-	Message              *Greeting `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
-	XXX_unrecognized     []byte    `json:"-"`
-	XXX_sizecache        int32     `json:"-"`
-}
-
-func (m *GreetCommand) Reset()         { *m = GreetCommand{} }
-func (m *GreetCommand) String() string { return proto.CompactTextString(m) }
-func (*GreetCommand) ProtoMessage()    {}
-func (*GreetCommand) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{3}
-}
-
-func (m *GreetCommand) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GreetCommand.Unmarshal(m, b)
-}
-func (m *GreetCommand) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GreetCommand.Marshal(b, m, deterministic)
-}
-func (m *GreetCommand) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GreetCommand.Merge(m, src)
-}
-func (m *GreetCommand) XXX_Size() int {
-	return xxx_messageInfo_GreetCommand.Size(m)
-}
-func (m *GreetCommand) XXX_DiscardUnknown() {
-	xxx_messageInfo_GreetCommand.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GreetCommand proto.InternalMessageInfo
-
-func (m *GreetCommand) GetAggregateIdentifier() string {
-	if m != nil {
-		return m.AggregateIdentifier
-	}
-	return ""
-}
-
-func (m *GreetCommand) GetMessage() *Greeting {
-	if m != nil {
-		return m.Message
-	}
-	return nil
-}
-
-type RecordCommand struct {
-	AggregateIdentifier  string   `protobuf:"bytes,1,opt,name=aggregateIdentifier,proto3" json:"aggregateIdentifier,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *RecordCommand) Reset()         { *m = RecordCommand{} }
-func (m *RecordCommand) String() string { return proto.CompactTextString(m) }
-func (*RecordCommand) ProtoMessage()    {}
-func (*RecordCommand) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{4}
-}
-
-func (m *RecordCommand) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_RecordCommand.Unmarshal(m, b)
-}
-func (m *RecordCommand) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_RecordCommand.Marshal(b, m, deterministic)
-}
-func (m *RecordCommand) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RecordCommand.Merge(m, src)
-}
-func (m *RecordCommand) XXX_Size() int {
-	return xxx_messageInfo_RecordCommand.Size(m)
-}
-func (m *RecordCommand) XXX_DiscardUnknown() {
-	xxx_messageInfo_RecordCommand.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_RecordCommand proto.InternalMessageInfo
-
-func (m *RecordCommand) GetAggregateIdentifier() string {
-	if m != nil {
-		return m.AggregateIdentifier
-	}
-	return ""
-}
-
-type StopCommand struct {
-	AggregateIdentifier  string   `protobuf:"bytes,1,opt,name=aggregateIdentifier,proto3" json:"aggregateIdentifier,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *StopCommand) Reset()         { *m = StopCommand{} }
-func (m *StopCommand) String() string { return proto.CompactTextString(m) }
-func (*StopCommand) ProtoMessage()    {}
-func (*StopCommand) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{5}
-}
-
-func (m *StopCommand) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_StopCommand.Unmarshal(m, b)
-}
-func (m *StopCommand) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_StopCommand.Marshal(b, m, deterministic)
-}
-func (m *StopCommand) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StopCommand.Merge(m, src)
-}
-func (m *StopCommand) XXX_Size() int {
-	return xxx_messageInfo_StopCommand.Size(m)
-}
-func (m *StopCommand) XXX_DiscardUnknown() {
-	xxx_messageInfo_StopCommand.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_StopCommand proto.InternalMessageInfo
-
-func (m *StopCommand) GetAggregateIdentifier() string {
-	if m != nil {
-		return m.AggregateIdentifier
-	}
-	return ""
-}
-
 type RegisterTrustedKeyCommand struct {
 	PublicKey            *PublicKey `protobuf:"bytes,1,opt,name=publicKey,proto3" json:"publicKey,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
@@ -269,7 +66,7 @@ func (m *RegisterTrustedKeyCommand) Reset()         { *m = RegisterTrustedKeyCom
 func (m *RegisterTrustedKeyCommand) String() string { return proto.CompactTextString(m) }
 func (*RegisterTrustedKeyCommand) ProtoMessage()    {}
 func (*RegisterTrustedKeyCommand) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{6}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{1}
 }
 
 func (m *RegisterTrustedKeyCommand) XXX_Unmarshal(b []byte) error {
@@ -308,7 +105,7 @@ func (m *RegisterKeyManagerCommand) Reset()         { *m = RegisterKeyManagerCom
 func (m *RegisterKeyManagerCommand) String() string { return proto.CompactTextString(m) }
 func (*RegisterKeyManagerCommand) ProtoMessage()    {}
 func (*RegisterKeyManagerCommand) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{7}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{2}
 }
 
 func (m *RegisterKeyManagerCommand) XXX_Unmarshal(b []byte) error {
@@ -347,7 +144,7 @@ func (m *RegisterCredentialsCommand) Reset()         { *m = RegisterCredentialsC
 func (m *RegisterCredentialsCommand) String() string { return proto.CompactTextString(m) }
 func (*RegisterCredentialsCommand) ProtoMessage()    {}
 func (*RegisterCredentialsCommand) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{8}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{3}
 }
 
 func (m *RegisterCredentialsCommand) XXX_Unmarshal(b []byte) error {
@@ -386,7 +183,7 @@ func (m *ChangePropertyCommand) Reset()         { *m = ChangePropertyCommand{} }
 func (m *ChangePropertyCommand) String() string { return proto.CompactTextString(m) }
 func (*ChangePropertyCommand) ProtoMessage()    {}
 func (*ChangePropertyCommand) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{9}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{4}
 }
 
 func (m *ChangePropertyCommand) XXX_Unmarshal(b []byte) error {
@@ -414,107 +211,6 @@ func (m *ChangePropertyCommand) GetProperty() *KeyValue {
 	return nil
 }
 
-type GreetedEvent struct {
-	Message              *Greeting `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
-	XXX_unrecognized     []byte    `json:"-"`
-	XXX_sizecache        int32     `json:"-"`
-}
-
-func (m *GreetedEvent) Reset()         { *m = GreetedEvent{} }
-func (m *GreetedEvent) String() string { return proto.CompactTextString(m) }
-func (*GreetedEvent) ProtoMessage()    {}
-func (*GreetedEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{10}
-}
-
-func (m *GreetedEvent) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GreetedEvent.Unmarshal(m, b)
-}
-func (m *GreetedEvent) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GreetedEvent.Marshal(b, m, deterministic)
-}
-func (m *GreetedEvent) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GreetedEvent.Merge(m, src)
-}
-func (m *GreetedEvent) XXX_Size() int {
-	return xxx_messageInfo_GreetedEvent.Size(m)
-}
-func (m *GreetedEvent) XXX_DiscardUnknown() {
-	xxx_messageInfo_GreetedEvent.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GreetedEvent proto.InternalMessageInfo
-
-func (m *GreetedEvent) GetMessage() *Greeting {
-	if m != nil {
-		return m.Message
-	}
-	return nil
-}
-
-type StartedRecordingEvent struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *StartedRecordingEvent) Reset()         { *m = StartedRecordingEvent{} }
-func (m *StartedRecordingEvent) String() string { return proto.CompactTextString(m) }
-func (*StartedRecordingEvent) ProtoMessage()    {}
-func (*StartedRecordingEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{11}
-}
-
-func (m *StartedRecordingEvent) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_StartedRecordingEvent.Unmarshal(m, b)
-}
-func (m *StartedRecordingEvent) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_StartedRecordingEvent.Marshal(b, m, deterministic)
-}
-func (m *StartedRecordingEvent) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StartedRecordingEvent.Merge(m, src)
-}
-func (m *StartedRecordingEvent) XXX_Size() int {
-	return xxx_messageInfo_StartedRecordingEvent.Size(m)
-}
-func (m *StartedRecordingEvent) XXX_DiscardUnknown() {
-	xxx_messageInfo_StartedRecordingEvent.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_StartedRecordingEvent proto.InternalMessageInfo
-
-type StoppedRecordingEvent struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *StoppedRecordingEvent) Reset()         { *m = StoppedRecordingEvent{} }
-func (m *StoppedRecordingEvent) String() string { return proto.CompactTextString(m) }
-func (*StoppedRecordingEvent) ProtoMessage()    {}
-func (*StoppedRecordingEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{12}
-}
-
-func (m *StoppedRecordingEvent) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_StoppedRecordingEvent.Unmarshal(m, b)
-}
-func (m *StoppedRecordingEvent) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_StoppedRecordingEvent.Marshal(b, m, deterministic)
-}
-func (m *StoppedRecordingEvent) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StoppedRecordingEvent.Merge(m, src)
-}
-func (m *StoppedRecordingEvent) XXX_Size() int {
-	return xxx_messageInfo_StoppedRecordingEvent.Size(m)
-}
-func (m *StoppedRecordingEvent) XXX_DiscardUnknown() {
-	xxx_messageInfo_StoppedRecordingEvent.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_StoppedRecordingEvent proto.InternalMessageInfo
-
 type TrustedKeyAddedEvent struct {
 	PublicKey            *PublicKey `protobuf:"bytes,1,opt,name=publicKey,proto3" json:"publicKey,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
@@ -526,7 +222,7 @@ func (m *TrustedKeyAddedEvent) Reset()         { *m = TrustedKeyAddedEvent{} }
 func (m *TrustedKeyAddedEvent) String() string { return proto.CompactTextString(m) }
 func (*TrustedKeyAddedEvent) ProtoMessage()    {}
 func (*TrustedKeyAddedEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{13}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{5}
 }
 
 func (m *TrustedKeyAddedEvent) XXX_Unmarshal(b []byte) error {
@@ -565,7 +261,7 @@ func (m *TrustedKeyRemovedEvent) Reset()         { *m = TrustedKeyRemovedEvent{}
 func (m *TrustedKeyRemovedEvent) String() string { return proto.CompactTextString(m) }
 func (*TrustedKeyRemovedEvent) ProtoMessage()    {}
 func (*TrustedKeyRemovedEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{14}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{6}
 }
 
 func (m *TrustedKeyRemovedEvent) XXX_Unmarshal(b []byte) error {
@@ -604,7 +300,7 @@ func (m *KeyManagerAddedEvent) Reset()         { *m = KeyManagerAddedEvent{} }
 func (m *KeyManagerAddedEvent) String() string { return proto.CompactTextString(m) }
 func (*KeyManagerAddedEvent) ProtoMessage()    {}
 func (*KeyManagerAddedEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{15}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{7}
 }
 
 func (m *KeyManagerAddedEvent) XXX_Unmarshal(b []byte) error {
@@ -643,7 +339,7 @@ func (m *KeyManagerRemovedEvent) Reset()         { *m = KeyManagerRemovedEvent{}
 func (m *KeyManagerRemovedEvent) String() string { return proto.CompactTextString(m) }
 func (*KeyManagerRemovedEvent) ProtoMessage()    {}
 func (*KeyManagerRemovedEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{16}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{8}
 }
 
 func (m *KeyManagerRemovedEvent) XXX_Unmarshal(b []byte) error {
@@ -682,7 +378,7 @@ func (m *CredentialsAddedEvent) Reset()         { *m = CredentialsAddedEvent{} }
 func (m *CredentialsAddedEvent) String() string { return proto.CompactTextString(m) }
 func (*CredentialsAddedEvent) ProtoMessage()    {}
 func (*CredentialsAddedEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{17}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{9}
 }
 
 func (m *CredentialsAddedEvent) XXX_Unmarshal(b []byte) error {
@@ -721,7 +417,7 @@ func (m *CredentialsRemovedEvent) Reset()         { *m = CredentialsRemovedEvent
 func (m *CredentialsRemovedEvent) String() string { return proto.CompactTextString(m) }
 func (*CredentialsRemovedEvent) ProtoMessage()    {}
 func (*CredentialsRemovedEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{18}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{10}
 }
 
 func (m *CredentialsRemovedEvent) XXX_Unmarshal(b []byte) error {
@@ -760,7 +456,7 @@ func (m *PropertyChangedEvent) Reset()         { *m = PropertyChangedEvent{} }
 func (m *PropertyChangedEvent) String() string { return proto.CompactTextString(m) }
 func (*PropertyChangedEvent) ProtoMessage()    {}
 func (*PropertyChangedEvent) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{19}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{11}
 }
 
 func (m *PropertyChangedEvent) XXX_Unmarshal(b []byte) error {
@@ -788,45 +484,6 @@ func (m *PropertyChangedEvent) GetProperty() *KeyValue {
 	return nil
 }
 
-type SearchQuery struct {
-	Query                string   `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *SearchQuery) Reset()         { *m = SearchQuery{} }
-func (m *SearchQuery) String() string { return proto.CompactTextString(m) }
-func (*SearchQuery) ProtoMessage()    {}
-func (*SearchQuery) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{20}
-}
-
-func (m *SearchQuery) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SearchQuery.Unmarshal(m, b)
-}
-func (m *SearchQuery) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SearchQuery.Marshal(b, m, deterministic)
-}
-func (m *SearchQuery) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SearchQuery.Merge(m, src)
-}
-func (m *SearchQuery) XXX_Size() int {
-	return xxx_messageInfo_SearchQuery.Size(m)
-}
-func (m *SearchQuery) XXX_DiscardUnknown() {
-	xxx_messageInfo_SearchQuery.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SearchQuery proto.InternalMessageInfo
-
-func (m *SearchQuery) GetQuery() string {
-	if m != nil {
-		return m.Query
-	}
-	return ""
-}
-
 type PublicKey struct {
 	PublicKey            string   `protobuf:"bytes,1,opt,name=publicKey,proto3" json:"publicKey,omitempty"`
 	Name                 string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
@@ -839,7 +496,7 @@ func (m *PublicKey) Reset()         { *m = PublicKey{} }
 func (m *PublicKey) String() string { return proto.CompactTextString(m) }
 func (*PublicKey) ProtoMessage()    {}
 func (*PublicKey) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{21}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{12}
 }
 
 func (m *PublicKey) XXX_Unmarshal(b []byte) error {
@@ -886,7 +543,7 @@ func (m *PrivateKey) Reset()         { *m = PrivateKey{} }
 func (m *PrivateKey) String() string { return proto.CompactTextString(m) }
 func (*PrivateKey) ProtoMessage()    {}
 func (*PrivateKey) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{22}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{13}
 }
 
 func (m *PrivateKey) XXX_Unmarshal(b []byte) error {
@@ -932,7 +589,7 @@ func (m *AccessToken) Reset()         { *m = AccessToken{} }
 func (m *AccessToken) String() string { return proto.CompactTextString(m) }
 func (*AccessToken) ProtoMessage()    {}
 func (*AccessToken) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{23}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{14}
 }
 
 func (m *AccessToken) XXX_Unmarshal(b []byte) error {
@@ -974,7 +631,7 @@ func (m *TrustedKeyRequest) Reset()         { *m = TrustedKeyRequest{} }
 func (m *TrustedKeyRequest) String() string { return proto.CompactTextString(m) }
 func (*TrustedKeyRequest) ProtoMessage()    {}
 func (*TrustedKeyRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{24}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{15}
 }
 
 func (m *TrustedKeyRequest) XXX_Unmarshal(b []byte) error {
@@ -1035,7 +692,7 @@ func (m *TrustedKeyResponse) Reset()         { *m = TrustedKeyResponse{} }
 func (m *TrustedKeyResponse) String() string { return proto.CompactTextString(m) }
 func (*TrustedKeyResponse) ProtoMessage()    {}
 func (*TrustedKeyResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{25}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{16}
 }
 
 func (m *TrustedKeyResponse) XXX_Unmarshal(b []byte) error {
@@ -1084,7 +741,7 @@ func (m *Signature) Reset()         { *m = Signature{} }
 func (m *Signature) String() string { return proto.CompactTextString(m) }
 func (*Signature) ProtoMessage()    {}
 func (*Signature) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{26}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{17}
 }
 
 func (m *Signature) XXX_Unmarshal(b []byte) error {
@@ -1145,7 +802,7 @@ func (m *Status) Reset()         { *m = Status{} }
 func (m *Status) String() string { return proto.CompactTextString(m) }
 func (*Status) ProtoMessage()    {}
 func (*Status) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{27}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{18}
 }
 
 func (m *Status) XXX_Unmarshal(b []byte) error {
@@ -1193,7 +850,7 @@ func (m *Credentials) Reset()         { *m = Credentials{} }
 func (m *Credentials) String() string { return proto.CompactTextString(m) }
 func (*Credentials) ProtoMessage()    {}
 func (*Credentials) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{28}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{19}
 }
 
 func (m *Credentials) XXX_Unmarshal(b []byte) error {
@@ -1247,7 +904,7 @@ func (m *KeyValue) Reset()         { *m = KeyValue{} }
 func (m *KeyValue) String() string { return proto.CompactTextString(m) }
 func (*KeyValue) ProtoMessage()    {}
 func (*KeyValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_15a1dc8d40dadaa6, []int{29}
+	return fileDescriptor_15a1dc8d40dadaa6, []int{20}
 }
 
 func (m *KeyValue) XXX_Unmarshal(b []byte) error {
@@ -1283,19 +940,11 @@ func (m *KeyValue) GetValue() string {
 }
 
 func init() {
-	proto.RegisterType((*Greeting)(nil), "org.leialearns.grpc.example.Greeting")
-	proto.RegisterType((*Acknowledgement)(nil), "org.leialearns.grpc.example.Acknowledgement")
 	proto.RegisterType((*Empty)(nil), "org.leialearns.grpc.example.Empty")
-	proto.RegisterType((*GreetCommand)(nil), "org.leialearns.grpc.example.GreetCommand")
-	proto.RegisterType((*RecordCommand)(nil), "org.leialearns.grpc.example.RecordCommand")
-	proto.RegisterType((*StopCommand)(nil), "org.leialearns.grpc.example.StopCommand")
 	proto.RegisterType((*RegisterTrustedKeyCommand)(nil), "org.leialearns.grpc.example.RegisterTrustedKeyCommand")
 	proto.RegisterType((*RegisterKeyManagerCommand)(nil), "org.leialearns.grpc.example.RegisterKeyManagerCommand")
 	proto.RegisterType((*RegisterCredentialsCommand)(nil), "org.leialearns.grpc.example.RegisterCredentialsCommand")
 	proto.RegisterType((*ChangePropertyCommand)(nil), "org.leialearns.grpc.example.ChangePropertyCommand")
-	proto.RegisterType((*GreetedEvent)(nil), "org.leialearns.grpc.example.GreetedEvent")
-	proto.RegisterType((*StartedRecordingEvent)(nil), "org.leialearns.grpc.example.StartedRecordingEvent")
-	proto.RegisterType((*StoppedRecordingEvent)(nil), "org.leialearns.grpc.example.StoppedRecordingEvent")
 	proto.RegisterType((*TrustedKeyAddedEvent)(nil), "org.leialearns.grpc.example.TrustedKeyAddedEvent")
 	proto.RegisterType((*TrustedKeyRemovedEvent)(nil), "org.leialearns.grpc.example.TrustedKeyRemovedEvent")
 	proto.RegisterType((*KeyManagerAddedEvent)(nil), "org.leialearns.grpc.example.KeyManagerAddedEvent")
@@ -1303,7 +952,6 @@ func init() {
 	proto.RegisterType((*CredentialsAddedEvent)(nil), "org.leialearns.grpc.example.CredentialsAddedEvent")
 	proto.RegisterType((*CredentialsRemovedEvent)(nil), "org.leialearns.grpc.example.CredentialsRemovedEvent")
 	proto.RegisterType((*PropertyChangedEvent)(nil), "org.leialearns.grpc.example.PropertyChangedEvent")
-	proto.RegisterType((*SearchQuery)(nil), "org.leialearns.grpc.example.SearchQuery")
 	proto.RegisterType((*PublicKey)(nil), "org.leialearns.grpc.example.PublicKey")
 	proto.RegisterType((*PrivateKey)(nil), "org.leialearns.grpc.example.PrivateKey")
 	proto.RegisterType((*AccessToken)(nil), "org.leialearns.grpc.example.AccessToken")
@@ -1320,66 +968,53 @@ func init() {
 }
 
 var fileDescriptor_15a1dc8d40dadaa6 = []byte{
-	// 942 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x57, 0x5f, 0x6f, 0xdc, 0x44,
-	0x10, 0x8f, 0x93, 0xbb, 0x6b, 0x6e, 0x2e, 0xa1, 0x74, 0x49, 0xd2, 0x23, 0xa0, 0x12, 0x6d, 0x0b,
-	0x9c, 0x44, 0x75, 0x89, 0x82, 0x84, 0x84, 0x10, 0x0a, 0x47, 0xa8, 0x10, 0x84, 0x3f, 0xc1, 0x17,
-	0x21, 0x35, 0x82, 0x4a, 0x1b, 0x7b, 0xea, 0x98, 0x9c, 0xbd, 0xce, 0xee, 0xfa, 0xca, 0xf5, 0x8d,
-	0x67, 0x9e, 0xf8, 0x78, 0x7c, 0x1b, 0xb4, 0xb6, 0xd7, 0xde, 0x4b, 0x23, 0xc7, 0x89, 0x8e, 0xb7,
-	0xdd, 0xd9, 0x99, 0xdf, 0xfc, 0xd9, 0xdf, 0xce, 0xd8, 0xb0, 0x8e, 0x7f, 0xb2, 0x28, 0x99, 0xe0,
-	0x30, 0x11, 0x5c, 0x71, 0xf2, 0x1e, 0x17, 0xc1, 0x70, 0x82, 0x21, 0x9b, 0x20, 0x13, 0xb1, 0x1c,
-	0x06, 0x22, 0xf1, 0x86, 0x85, 0x0a, 0x7d, 0x02, 0xab, 0xdf, 0x0a, 0x44, 0x15, 0xc6, 0x01, 0xe9,
-	0xc3, 0xbd, 0x08, 0xa5, 0x64, 0x01, 0xf6, 0x9d, 0x1d, 0x67, 0xd0, 0x75, 0xcd, 0x96, 0x7e, 0x02,
-	0xf7, 0x47, 0xde, 0x45, 0xcc, 0x5f, 0x4d, 0xd0, 0x0f, 0x30, 0xc2, 0x58, 0xd5, 0x28, 0xdf, 0x83,
-	0xf6, 0xb3, 0x28, 0x51, 0x33, 0xfa, 0x97, 0x03, 0x6b, 0x19, 0xf8, 0x21, 0x8f, 0x22, 0x16, 0xfb,
-	0x64, 0x0f, 0xde, 0x61, 0x41, 0x20, 0x30, 0x60, 0x0a, 0xbf, 0xf3, 0x31, 0x56, 0xe1, 0xcb, 0x10,
-	0x45, 0x61, 0x7f, 0xdd, 0x11, 0x39, 0xa8, 0xbc, 0x2c, 0xef, 0x38, 0x83, 0xde, 0xfe, 0x87, 0xc3,
-	0x9a, 0x6c, 0x86, 0x26, 0x95, 0x2a, 0x98, 0x11, 0xac, 0xbb, 0xe8, 0x71, 0xe1, 0xdf, 0x39, 0x06,
-	0x7a, 0x00, 0xbd, 0xb1, 0xe2, 0xc9, 0xdd, 0x01, 0x18, 0xbc, 0xeb, 0x62, 0x10, 0x4a, 0x85, 0xe2,
-	0x44, 0xa4, 0x52, 0xa1, 0x7f, 0x84, 0x33, 0x03, 0xf7, 0x0d, 0x74, 0x93, 0xf4, 0x6c, 0x12, 0x7a,
-	0x47, 0x38, 0xcb, 0x40, 0x7a, 0xfb, 0x1f, 0xd5, 0xe6, 0x78, 0x6c, 0xb4, 0xdd, 0xca, 0xd0, 0x76,
-	0x71, 0x84, 0xb3, 0x1f, 0x59, 0xcc, 0x02, 0x14, 0x8b, 0x75, 0x71, 0x0e, 0xdb, 0xc6, 0xc5, 0xa1,
-	0xc0, 0x2c, 0x3b, 0x36, 0x91, 0xc6, 0xc7, 0xf7, 0xd0, 0xf3, 0x2a, 0x69, 0xe1, 0x65, 0x50, 0xeb,
-	0xc5, 0x42, 0x71, 0x6d, 0x63, 0x7a, 0x0a, 0x9b, 0x87, 0xe7, 0x2c, 0x0e, 0xf0, 0x58, 0xf0, 0x04,
-	0x85, 0x2a, 0x6b, 0x35, 0x82, 0xd5, 0xa4, 0x10, 0x15, 0x1e, 0xea, 0xe9, 0x70, 0x84, 0xb3, 0x5f,
-	0xd9, 0x24, 0x45, 0xb7, 0x34, 0xa3, 0x3f, 0x17, 0x94, 0x44, 0xff, 0xd9, 0x54, 0xd3, 0xf8, 0x60,
-	0x9e, 0xc6, 0xb7, 0x27, 0xd8, 0x43, 0xd8, 0x1c, 0x2b, 0x26, 0x14, 0xfa, 0x39, 0xcf, 0xc2, 0x38,
-	0xc8, 0x90, 0xf3, 0x03, 0x9e, 0x24, 0x6f, 0x1c, 0xfc, 0x06, 0x1b, 0x15, 0x0d, 0x46, 0xbe, 0x6f,
-	0x42, 0x59, 0xcc, 0x35, 0x3d, 0x85, 0xad, 0x0a, 0xdd, 0xc5, 0x88, 0x4f, 0x0d, 0x3e, 0x81, 0x56,
-	0xcc, 0x22, 0xf3, 0x5c, 0xb3, 0xb5, 0x8e, 0xa5, 0xe2, 0xcb, 0xff, 0x11, 0x4b, 0x85, 0x7e, 0x63,
-	0x2c, 0x1e, 0x6c, 0x5a, 0x94, 0xb0, 0x82, 0x59, 0x24, 0xb7, 0x3e, 0x87, 0x87, 0xf6, 0x99, 0x1d,
-	0xd3, 0x23, 0x80, 0xf0, 0xea, 0x7b, 0xb6, 0x24, 0xf4, 0x39, 0x6c, 0x94, 0x84, 0xcc, 0xe8, 0x59,
-	0xd8, 0x2d, 0x80, 0x95, 0x8f, 0xa1, 0x37, 0x46, 0x26, 0xbc, 0xf3, 0x5f, 0x52, 0x14, 0x33, 0xb2,
-	0x01, 0xed, 0x4b, 0xbd, 0x28, 0x82, 0xc8, 0x37, 0xf4, 0x4b, 0xe8, 0x96, 0x55, 0x26, 0xef, 0x5f,
-	0xbd, 0xa0, 0xae, 0x55, 0xf8, 0xb2, 0xbc, 0xcb, 0x56, 0x79, 0xbf, 0x02, 0x38, 0x16, 0xe1, 0x94,
-	0x29, 0xd4, 0x1a, 0x8f, 0x00, 0x92, 0x72, 0x67, 0x92, 0xad, 0x24, 0xd7, 0x22, 0x7c, 0x00, 0xbd,
-	0x91, 0xe7, 0xa1, 0x94, 0x27, 0xfc, 0x02, 0x63, 0xf2, 0x36, 0xac, 0xfc, 0xf1, 0x4a, 0x15, 0xb6,
-	0x7a, 0x49, 0xff, 0x75, 0xe0, 0x81, 0x4d, 0xbe, 0xcb, 0x14, 0xe5, 0x82, 0xb8, 0xa4, 0x6b, 0x12,
-	0xf3, 0xd8, 0xcb, 0x23, 0x5a, 0x73, 0xf3, 0x8d, 0xc6, 0x96, 0x61, 0x10, 0x33, 0x95, 0x0a, 0xec,
-	0xb7, 0x1a, 0x60, 0x8f, 0x8d, 0xb6, 0x5b, 0x19, 0x12, 0x0a, 0x6b, 0xa1, 0xac, 0x98, 0xda, 0x6f,
-	0xef, 0x38, 0x83, 0x55, 0x77, 0x4e, 0x46, 0x03, 0x20, 0x76, 0x6a, 0x32, 0xe1, 0xb1, 0x44, 0xf2,
-	0x05, 0x74, 0xa4, 0x62, 0x2a, 0x35, 0xac, 0x7c, 0x5c, 0xef, 0x3c, 0x53, 0x75, 0x0b, 0x93, 0xeb,
-	0x53, 0xa2, 0x97, 0xd0, 0x2d, 0x83, 0x24, 0x5b, 0xd0, 0x79, 0xc9, 0x45, 0xc4, 0x4c, 0x99, 0x8b,
-	0x9d, 0xbe, 0x9e, 0xb3, 0x09, 0x3f, 0x2b, 0x2c, 0xb3, 0xb5, 0x96, 0x09, 0x94, 0xaa, 0xbf, 0x92,
-	0xcb, 0xf4, 0x9a, 0x3c, 0x81, 0xf5, 0x32, 0xcd, 0x9f, 0xf4, 0x7d, 0xb6, 0x32, 0x98, 0x79, 0x21,
-	0xfd, 0x0c, 0x3a, 0x79, 0x68, 0x1a, 0xc3, 0xe3, 0x7e, 0xfe, 0x2e, 0xdb, 0x6e, 0xb6, 0xb6, 0x27,
-	0xfd, 0xf2, 0xfc, 0xa4, 0xff, 0xdb, 0x81, 0x9e, 0xf5, 0x9a, 0x6e, 0x7a, 0x41, 0x3a, 0x1b, 0x89,
-	0x9e, 0x40, 0x55, 0x00, 0x15, 0xbb, 0xf9, 0x5b, 0x5c, 0xb9, 0xe3, 0x2d, 0xd2, 0x7d, 0x58, 0x35,
-	0x4f, 0x4b, 0x73, 0xf3, 0xa2, 0xe4, 0xb5, 0x5e, 0xea, 0x62, 0x4f, 0xf5, 0x51, 0xe1, 0x3a, 0xdf,
-	0xec, 0xff, 0xd3, 0x85, 0xb7, 0xf2, 0x79, 0x20, 0xc6, 0x28, 0xa6, 0xa1, 0x87, 0xe4, 0x05, 0xb4,
-	0x33, 0x09, 0x69, 0x36, 0x09, 0xb6, 0x9f, 0xd6, 0xaa, 0x5d, 0xf9, 0x6c, 0xa2, 0x4b, 0xe4, 0x14,
-	0xba, 0xc6, 0x56, 0x12, 0x5a, 0x6b, 0x9c, 0x7d, 0x46, 0x6d, 0x37, 0x8b, 0x83, 0x2e, 0xed, 0x39,
-	0xc4, 0x85, 0x4e, 0x3e, 0x6c, 0x1a, 0x01, 0x37, 0xd0, 0xa1, 0x4b, 0xe4, 0x18, 0x5a, 0x7a, 0x8e,
-	0x2d, 0x10, 0xf1, 0x77, 0xe8, 0xe4, 0xdd, 0x8e, 0xd4, 0x37, 0x71, 0xab, 0x25, 0xde, 0xa6, 0x08,
-	0xcf, 0xa1, 0x75, 0x12, 0x46, 0x78, 0x03, 0xb8, 0xd5, 0xc9, 0x1a, 0x83, 0x13, 0x06, 0xf7, 0x7f,
-	0x08, 0xa5, 0xaa, 0x1a, 0x41, 0xb3, 0x1b, 0x6c, 0xd8, 0xee, 0xb2, 0xe8, 0x5f, 0xc3, 0x83, 0x7c,
-	0xba, 0xd8, 0x4e, 0x86, 0xb5, 0x00, 0x6f, 0xb4, 0xdc, 0xed, 0xdd, 0xc6, 0xfa, 0x79, 0x1f, 0xa3,
-	0x4b, 0x03, 0x67, 0xcf, 0x21, 0x2f, 0x60, 0x7d, 0x8c, 0xca, 0x9a, 0x12, 0x1f, 0xd7, 0x07, 0x5e,
-	0x2a, 0x36, 0xbc, 0x78, 0x34, 0xb9, 0xd9, 0x4d, 0xa3, 0xf1, 0x20, 0x6f, 0xe6, 0x64, 0xe0, 0x10,
-	0x06, 0xdd, 0x51, 0xaa, 0xce, 0xb9, 0x08, 0x5f, 0xe3, 0x2d, 0xe0, 0x1b, 0xf3, 0x25, 0x7b, 0xc4,
-	0xbd, 0xac, 0x52, 0xf9, 0xfc, 0x26, 0xcd, 0x06, 0x7e, 0xb3, 0x04, 0xbe, 0xde, 0x3a, 0xdd, 0x90,
-	0xc2, 0xdb, 0x4d, 0x2e, 0x82, 0x5d, 0x7d, 0xbe, 0x5b, 0x9c, 0x9f, 0x75, 0xb2, 0xdf, 0xb9, 0x4f,
-	0xff, 0x0b, 0x00, 0x00, 0xff, 0xff, 0xb9, 0xbb, 0xc3, 0x78, 0xdf, 0x0d, 0x00, 0x00,
+	// 729 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xb4, 0x56, 0xeb, 0x6a, 0x13, 0x41,
+	0x14, 0xce, 0xda, 0x24, 0x6d, 0x4e, 0x5a, 0xb5, 0x43, 0x5a, 0x63, 0x94, 0x5a, 0xc6, 0x5b, 0x7e,
+	0x48, 0x52, 0x2a, 0x08, 0x22, 0x82, 0xb1, 0x16, 0xc1, 0xa8, 0x94, 0x6d, 0x11, 0x2c, 0x22, 0x4c,
+	0x36, 0xa7, 0xdb, 0xb5, 0xd9, 0x4b, 0x67, 0x66, 0xa3, 0xe9, 0x2b, 0xf8, 0x84, 0x3e, 0x88, 0xff,
+	0x65, 0xf6, 0x3a, 0xd5, 0xb2, 0x5d, 0x25, 0xfe, 0x9b, 0x39, 0x73, 0xce, 0xf7, 0x9d, 0xcb, 0x37,
+	0xb3, 0x0b, 0x2b, 0xf8, 0x8d, 0xb9, 0xc1, 0x04, 0x7b, 0x01, 0xf7, 0xa5, 0x4f, 0x6e, 0xf9, 0xdc,
+	0xee, 0x4d, 0xd0, 0x61, 0x13, 0x64, 0xdc, 0x13, 0x3d, 0x9b, 0x07, 0x56, 0x2f, 0x71, 0xa1, 0x8b,
+	0x50, 0xdb, 0x75, 0x03, 0x39, 0xa3, 0x0c, 0x6e, 0x9a, 0x68, 0x3b, 0x42, 0x22, 0x3f, 0xe0, 0xa1,
+	0x90, 0x38, 0x1e, 0xe2, 0x6c, 0xc7, 0x77, 0x5d, 0xe6, 0x8d, 0xc9, 0x2b, 0x68, 0x04, 0xe1, 0x68,
+	0xe2, 0x58, 0x43, 0x9c, 0xb5, 0x8d, 0x4d, 0xa3, 0xdb, 0xdc, 0x7e, 0xd0, 0x2b, 0x80, 0xed, 0xed,
+	0xa5, 0xde, 0x66, 0x1e, 0xa8, 0x53, 0x0c, 0x71, 0xf6, 0x8e, 0x79, 0xcc, 0x46, 0x3e, 0x5f, 0x8a,
+	0x63, 0xe8, 0xa4, 0x14, 0x3b, 0x1c, 0xc7, 0xe8, 0x49, 0x87, 0x4d, 0x44, 0xca, 0xf1, 0x06, 0x9a,
+	0x56, 0x6e, 0x4d, 0x58, 0xba, 0x85, 0x2c, 0x1a, 0x8a, 0xa9, 0x07, 0xd3, 0x43, 0x58, 0xdb, 0x39,
+	0x66, 0x9e, 0x8d, 0x7b, 0xdc, 0x0f, 0x90, 0xcb, 0xac, 0x57, 0x03, 0x58, 0x0a, 0x12, 0x53, 0xc2,
+	0x70, 0xbf, 0x90, 0x61, 0x88, 0xb3, 0x0f, 0x6c, 0x12, 0xa2, 0x99, 0x85, 0xd1, 0x4f, 0xd0, 0xca,
+	0x67, 0x30, 0x18, 0x8f, 0x71, 0xbc, 0x3b, 0x45, 0x4f, 0xce, 0xa9, 0x47, 0x8f, 0x60, 0x3d, 0x47,
+	0x37, 0xd1, 0xf5, 0xa7, 0x29, 0x3e, 0x81, 0xaa, 0xc7, 0x5c, 0x8c, 0xa0, 0x1b, 0x66, 0xb4, 0x56,
+	0xb9, 0xe4, 0xc3, 0xfa, 0x1f, 0xb9, 0xe4, 0xe8, 0x97, 0xe6, 0x62, 0xc1, 0x9a, 0x36, 0x0f, 0x2d,
+	0x99, 0x79, 0x0e, 0xf6, 0x29, 0xdc, 0xd0, 0xcf, 0xf4, 0x9c, 0x36, 0x00, 0x9c, 0xe8, 0xe0, 0xc8,
+	0x41, 0x9e, 0x64, 0xa6, 0x59, 0xe8, 0x47, 0x68, 0x65, 0x6a, 0x88, 0xb4, 0x91, 0xc4, 0xcd, 0x41,
+	0x12, 0xcf, 0xa1, 0x91, 0x35, 0x90, 0xdc, 0xfe, 0xbd, 0xf7, 0x0d, 0xad, 0xa7, 0x59, 0xe7, 0xae,
+	0x68, 0x9d, 0x7b, 0x01, 0xb0, 0xc7, 0x9d, 0x29, 0x93, 0xa8, 0x3c, 0x36, 0x00, 0x82, 0x6c, 0x97,
+	0xd6, 0x91, 0x5b, 0x2e, 0x44, 0xb8, 0x03, 0xcd, 0x81, 0x65, 0xa1, 0x10, 0x07, 0xfe, 0x09, 0x7a,
+	0xe4, 0x3a, 0x2c, 0x7c, 0xf9, 0x2a, 0x93, 0x58, 0xb5, 0xa4, 0x3f, 0x0c, 0x58, 0xd5, 0x75, 0x75,
+	0x1a, 0xa2, 0x98, 0x93, 0x4c, 0x48, 0x0b, 0x6a, 0x9e, 0xef, 0x59, 0x71, 0x46, 0xcb, 0x66, 0xbc,
+	0x51, 0xd8, 0xc2, 0xb1, 0x3d, 0x26, 0x43, 0x8e, 0xed, 0x6a, 0x09, 0xec, 0xfd, 0xd4, 0xdb, 0xcc,
+	0x03, 0x09, 0x85, 0x65, 0x47, 0xe4, 0x22, 0x6c, 0xd7, 0x36, 0x8d, 0xee, 0x92, 0x79, 0xce, 0x46,
+	0x6d, 0x20, 0x7a, 0x69, 0x22, 0xf0, 0x3d, 0x81, 0xe4, 0x19, 0xd4, 0x85, 0x64, 0x32, 0x4c, 0x05,
+	0x77, 0xb7, 0x98, 0x3c, 0x72, 0x35, 0x93, 0x90, 0x8b, 0x4b, 0xa2, 0xa7, 0xd0, 0xc8, 0x92, 0x24,
+	0xeb, 0x50, 0x3f, 0xf2, 0xb9, 0xcb, 0xd2, 0x36, 0x27, 0x3b, 0x35, 0x9e, 0xd1, 0xc4, 0x1f, 0x25,
+	0x91, 0xd1, 0x5a, 0xd9, 0x38, 0x0a, 0xd9, 0x5e, 0x88, 0x6d, 0x6a, 0x4d, 0xee, 0xc1, 0x4a, 0x56,
+	0xe6, 0x7b, 0x35, 0xcf, 0x6a, 0x04, 0x73, 0xde, 0x48, 0x9f, 0x40, 0x3d, 0x4e, 0x4d, 0x61, 0x58,
+	0xfe, 0x38, 0xbe, 0x72, 0x35, 0x33, 0x5a, 0x93, 0x36, 0x2c, 0xba, 0x28, 0x04, 0xb3, 0x53, 0x35,
+	0xa4, 0x5b, 0xfa, 0xdd, 0x80, 0xa6, 0x76, 0x51, 0x2e, 0xbb, 0x1c, 0xaa, 0x1a, 0x81, 0x16, 0x47,
+	0x99, 0x00, 0x25, 0xbb, 0xf3, 0x53, 0x5c, 0xf8, 0xc7, 0x29, 0xd2, 0x6d, 0x58, 0x4a, 0x6f, 0x8d,
+	0xd2, 0xe6, 0x49, 0xa6, 0x6b, 0xb5, 0x54, 0xcd, 0x9e, 0xaa, 0xa3, 0x84, 0x3a, 0xde, 0x6c, 0xff,
+	0xac, 0xc2, 0xd5, 0xd7, 0x1c, 0x51, 0x22, 0xdf, 0x47, 0x3e, 0x75, 0x2c, 0x24, 0x0c, 0xae, 0xbd,
+	0x75, 0x84, 0xcc, 0x87, 0x2d, 0x08, 0x2d, 0x4c, 0x26, 0xfa, 0x78, 0x76, 0x4a, 0x4a, 0x9a, 0x56,
+	0xb6, 0x0c, 0x72, 0x06, 0xab, 0xf1, 0xe3, 0xa0, 0x93, 0xf4, 0x0a, 0x01, 0xfe, 0xb8, 0x56, 0x9d,
+	0x7e, 0x69, 0xff, 0x58, 0xab, 0xb4, 0xd2, 0x35, 0xb6, 0x0c, 0xf2, 0x19, 0x56, 0xf6, 0x51, 0x6a,
+	0x2f, 0xc1, 0xc3, 0xe2, 0xc4, 0x33, 0xc7, 0x4e, 0x89, 0x2e, 0xd0, 0x0a, 0xc1, 0xb4, 0x36, 0x5d,
+	0x18, 0xa5, 0xdf, 0xe1, 0x72, 0x24, 0x5d, 0x83, 0x30, 0x68, 0x0c, 0x42, 0x79, 0xec, 0x73, 0xe7,
+	0x0c, 0xff, 0x02, 0xbe, 0xd8, 0x53, 0x7b, 0xdd, 0x68, 0x85, 0x1c, 0x42, 0x33, 0xea, 0x54, 0xfc,
+	0xfc, 0x92, 0x72, 0xef, 0x75, 0xb9, 0x02, 0x5e, 0xae, 0x1f, 0xb6, 0x04, 0xb7, 0xfa, 0xc1, 0x89,
+	0xdd, 0x57, 0xe7, 0xfd, 0xe4, 0x7c, 0x54, 0x8f, 0xfe, 0xd7, 0x1e, 0xff, 0x0a, 0x00, 0x00, 0xff,
+	0xff, 0x3b, 0xa3, 0xc6, 0x50, 0xc0, 0x09, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1394,12 +1029,6 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type GreeterServiceClient interface {
-	Greet(ctx context.Context, in *Greeting, opts ...grpc.CallOption) (*Acknowledgement, error)
-	Greetings(ctx context.Context, in *Empty, opts ...grpc.CallOption) (GreeterService_GreetingsClient, error)
-	Record(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
-	Stop(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error)
-	Search(ctx context.Context, in *SearchQuery, opts ...grpc.CallOption) (GreeterService_SearchClient, error)
-	Time(ctx context.Context, in *AccessToken, opts ...grpc.CallOption) (*Greeting, error)
 	ListTrustedKeys(ctx context.Context, in *Empty, opts ...grpc.CallOption) (GreeterService_ListTrustedKeysClient, error)
 	ChangeTrustedKeys(ctx context.Context, opts ...grpc.CallOption) (GreeterService_ChangeTrustedKeysClient, error)
 	SetPrivateKey(ctx context.Context, in *PrivateKey, opts ...grpc.CallOption) (*Empty, error)
@@ -1416,108 +1045,8 @@ func NewGreeterServiceClient(cc grpc.ClientConnInterface) GreeterServiceClient {
 	return &greeterServiceClient{cc}
 }
 
-func (c *greeterServiceClient) Greet(ctx context.Context, in *Greeting, opts ...grpc.CallOption) (*Acknowledgement, error) {
-	out := new(Acknowledgement)
-	err := c.cc.Invoke(ctx, "/org.leialearns.grpc.example.GreeterService/Greet", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *greeterServiceClient) Greetings(ctx context.Context, in *Empty, opts ...grpc.CallOption) (GreeterService_GreetingsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_GreeterService_serviceDesc.Streams[0], "/org.leialearns.grpc.example.GreeterService/Greetings", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &greeterServiceGreetingsClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type GreeterService_GreetingsClient interface {
-	Recv() (*Greeting, error)
-	grpc.ClientStream
-}
-
-type greeterServiceGreetingsClient struct {
-	grpc.ClientStream
-}
-
-func (x *greeterServiceGreetingsClient) Recv() (*Greeting, error) {
-	m := new(Greeting)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *greeterServiceClient) Record(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/org.leialearns.grpc.example.GreeterService/Record", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *greeterServiceClient) Stop(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
-	err := c.cc.Invoke(ctx, "/org.leialearns.grpc.example.GreeterService/Stop", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *greeterServiceClient) Search(ctx context.Context, in *SearchQuery, opts ...grpc.CallOption) (GreeterService_SearchClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_GreeterService_serviceDesc.Streams[1], "/org.leialearns.grpc.example.GreeterService/Search", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &greeterServiceSearchClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type GreeterService_SearchClient interface {
-	Recv() (*Greeting, error)
-	grpc.ClientStream
-}
-
-type greeterServiceSearchClient struct {
-	grpc.ClientStream
-}
-
-func (x *greeterServiceSearchClient) Recv() (*Greeting, error) {
-	m := new(Greeting)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *greeterServiceClient) Time(ctx context.Context, in *AccessToken, opts ...grpc.CallOption) (*Greeting, error) {
-	out := new(Greeting)
-	err := c.cc.Invoke(ctx, "/org.leialearns.grpc.example.GreeterService/Time", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *greeterServiceClient) ListTrustedKeys(ctx context.Context, in *Empty, opts ...grpc.CallOption) (GreeterService_ListTrustedKeysClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_GreeterService_serviceDesc.Streams[2], "/org.leialearns.grpc.example.GreeterService/ListTrustedKeys", opts...)
+	stream, err := c.cc.NewStream(ctx, &_GreeterService_serviceDesc.Streams[0], "/org.leialearns.grpc.example.GreeterService/ListTrustedKeys", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1549,7 +1078,7 @@ func (x *greeterServiceListTrustedKeysClient) Recv() (*PublicKey, error) {
 }
 
 func (c *greeterServiceClient) ChangeTrustedKeys(ctx context.Context, opts ...grpc.CallOption) (GreeterService_ChangeTrustedKeysClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_GreeterService_serviceDesc.Streams[3], "/org.leialearns.grpc.example.GreeterService/ChangeTrustedKeys", opts...)
+	stream, err := c.cc.NewStream(ctx, &_GreeterService_serviceDesc.Streams[1], "/org.leialearns.grpc.example.GreeterService/ChangeTrustedKeys", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1589,7 +1118,7 @@ func (c *greeterServiceClient) SetPrivateKey(ctx context.Context, in *PrivateKey
 }
 
 func (c *greeterServiceClient) ChangeCredentials(ctx context.Context, opts ...grpc.CallOption) (GreeterService_ChangeCredentialsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &_GreeterService_serviceDesc.Streams[4], "/org.leialearns.grpc.example.GreeterService/ChangeCredentials", opts...)
+	stream, err := c.cc.NewStream(ctx, &_GreeterService_serviceDesc.Streams[2], "/org.leialearns.grpc.example.GreeterService/ChangeCredentials", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1642,12 +1171,6 @@ func (c *greeterServiceClient) SetProperty(ctx context.Context, in *KeyValue, op
 
 // GreeterServiceServer is the server API for GreeterService service.
 type GreeterServiceServer interface {
-	Greet(context.Context, *Greeting) (*Acknowledgement, error)
-	Greetings(*Empty, GreeterService_GreetingsServer) error
-	Record(context.Context, *Empty) (*Empty, error)
-	Stop(context.Context, *Empty) (*Empty, error)
-	Search(*SearchQuery, GreeterService_SearchServer) error
-	Time(context.Context, *AccessToken) (*Greeting, error)
 	ListTrustedKeys(*Empty, GreeterService_ListTrustedKeysServer) error
 	ChangeTrustedKeys(GreeterService_ChangeTrustedKeysServer) error
 	SetPrivateKey(context.Context, *PrivateKey) (*Empty, error)
@@ -1660,24 +1183,6 @@ type GreeterServiceServer interface {
 type UnimplementedGreeterServiceServer struct {
 }
 
-func (*UnimplementedGreeterServiceServer) Greet(ctx context.Context, req *Greeting) (*Acknowledgement, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Greet not implemented")
-}
-func (*UnimplementedGreeterServiceServer) Greetings(req *Empty, srv GreeterService_GreetingsServer) error {
-	return status.Errorf(codes.Unimplemented, "method Greetings not implemented")
-}
-func (*UnimplementedGreeterServiceServer) Record(ctx context.Context, req *Empty) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Record not implemented")
-}
-func (*UnimplementedGreeterServiceServer) Stop(ctx context.Context, req *Empty) (*Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Stop not implemented")
-}
-func (*UnimplementedGreeterServiceServer) Search(req *SearchQuery, srv GreeterService_SearchServer) error {
-	return status.Errorf(codes.Unimplemented, "method Search not implemented")
-}
-func (*UnimplementedGreeterServiceServer) Time(ctx context.Context, req *AccessToken) (*Greeting, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Time not implemented")
-}
 func (*UnimplementedGreeterServiceServer) ListTrustedKeys(req *Empty, srv GreeterService_ListTrustedKeysServer) error {
 	return status.Errorf(codes.Unimplemented, "method ListTrustedKeys not implemented")
 }
@@ -1699,120 +1204,6 @@ func (*UnimplementedGreeterServiceServer) SetProperty(ctx context.Context, req *
 
 func RegisterGreeterServiceServer(s *grpc.Server, srv GreeterServiceServer) {
 	s.RegisterService(&_GreeterService_serviceDesc, srv)
-}
-
-func _GreeterService_Greet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Greeting)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(GreeterServiceServer).Greet(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/org.leialearns.grpc.example.GreeterService/Greet",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GreeterServiceServer).Greet(ctx, req.(*Greeting))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _GreeterService_Greetings_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(Empty)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(GreeterServiceServer).Greetings(m, &greeterServiceGreetingsServer{stream})
-}
-
-type GreeterService_GreetingsServer interface {
-	Send(*Greeting) error
-	grpc.ServerStream
-}
-
-type greeterServiceGreetingsServer struct {
-	grpc.ServerStream
-}
-
-func (x *greeterServiceGreetingsServer) Send(m *Greeting) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func _GreeterService_Record_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(GreeterServiceServer).Record(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/org.leialearns.grpc.example.GreeterService/Record",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GreeterServiceServer).Record(ctx, req.(*Empty))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _GreeterService_Stop_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(GreeterServiceServer).Stop(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/org.leialearns.grpc.example.GreeterService/Stop",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GreeterServiceServer).Stop(ctx, req.(*Empty))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _GreeterService_Search_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(SearchQuery)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(GreeterServiceServer).Search(m, &greeterServiceSearchServer{stream})
-}
-
-type GreeterService_SearchServer interface {
-	Send(*Greeting) error
-	grpc.ServerStream
-}
-
-type greeterServiceSearchServer struct {
-	grpc.ServerStream
-}
-
-func (x *greeterServiceSearchServer) Send(m *Greeting) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func _GreeterService_Time_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AccessToken)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(GreeterServiceServer).Time(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/org.leialearns.grpc.example.GreeterService/Time",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GreeterServiceServer).Time(ctx, req.(*AccessToken))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _GreeterService_ListTrustedKeys_Handler(srv interface{}, stream grpc.ServerStream) error {
@@ -1947,22 +1338,6 @@ var _GreeterService_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*GreeterServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Greet",
-			Handler:    _GreeterService_Greet_Handler,
-		},
-		{
-			MethodName: "Record",
-			Handler:    _GreeterService_Record_Handler,
-		},
-		{
-			MethodName: "Stop",
-			Handler:    _GreeterService_Stop_Handler,
-		},
-		{
-			MethodName: "Time",
-			Handler:    _GreeterService_Time_Handler,
-		},
-		{
 			MethodName: "SetPrivateKey",
 			Handler:    _GreeterService_SetPrivateKey_Handler,
 		},
@@ -1976,16 +1351,6 @@ var _GreeterService_serviceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams: []grpc.StreamDesc{
-		{
-			StreamName:    "Greetings",
-			Handler:       _GreeterService_Greetings_Handler,
-			ServerStreams: true,
-		},
-		{
-			StreamName:    "Search",
-			Handler:       _GreeterService_Search_Handler,
-			ServerStreams: true,
-		},
 		{
 			StreamName:    "ListTrustedKeys",
 			Handler:       _GreeterService_ListTrustedKeys_Handler,

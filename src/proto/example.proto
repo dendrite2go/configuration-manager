@@ -6,13 +6,6 @@ option go_package = "src/pkg/grpc/example";
 
 /* The GreeterService defines the gRPC requests for greeting AxonServer. */
 service GreeterService {
-    rpc Greet (Greeting) returns (Acknowledgement) {}
-    rpc Greetings (Empty) returns (stream Greeting) {}
-    rpc Record (Empty) returns (Empty) {}
-    rpc Stop (Empty) returns (Empty) {}
-    rpc Search (SearchQuery) returns (stream Greeting) {}
-    rpc Time (AccessToken) returns (Greeting) {}
-
     rpc ListTrustedKeys (Empty) returns (stream PublicKey) {}
     rpc ChangeTrustedKeys (stream TrustedKeyRequest) returns (stream TrustedKeyResponse) {}
     rpc SetPrivateKey(PrivateKey) returns (Empty) {}
@@ -21,30 +14,9 @@ service GreeterService {
     rpc SetProperty (KeyValue) returns (Empty) {}
 }
 
-message Greeting {
-    string message = 1;
-}
-
-message Acknowledgement {
-    string message = 1;
-}
-
 message Empty {}
 
 //  Commands
-
-message GreetCommand {
-    string aggregateIdentifier = 1;
-    Greeting message = 2;
-}
-
-message RecordCommand {
-    string aggregateIdentifier = 1;
-}
-
-message StopCommand {
-    string aggregateIdentifier = 1;
-}
 
 message RegisterTrustedKeyCommand {
     PublicKey publicKey = 1;
@@ -63,14 +35,6 @@ message ChangePropertyCommand {
 }
 
 // Events
-
-message GreetedEvent {
-    Greeting message = 1;
-}
-
-message StartedRecordingEvent {}
-
-message StoppedRecordingEvent {}
 
 message TrustedKeyAddedEvent {
     PublicKey publicKey = 1;
@@ -101,10 +65,6 @@ message PropertyChangedEvent {
 }
 
 // Queries
-
-message SearchQuery {
-    string query = 1;
-}
 
 // Access management
 

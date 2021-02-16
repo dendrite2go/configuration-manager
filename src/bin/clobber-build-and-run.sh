@@ -60,28 +60,10 @@ function waitForServerReady() {
     done
 }
 
-function countRunningContainers() {
-    local HASH
-    for HASH in $(docker-compose -p "${ENSEMBLE_NAME}" ps -q 2>/dev/null)
-    do
-        docker inspect -f '{{.State.Status}}' "${HASH}"
-    done | grep -c running
-}
-
-function waitForDockerComposeReady() {
-    (
-        cd "${PROJECT}/example"
-        while [[ "$(countRunningContainers)" -gt 0 ]]
-        do
-            sleep 0.5
-        done
-    )
-}
-
 (
     cd "${PROJECT}"
 
-    src/bin/generate-root-key-pair.sh
+    src/bin/generate-root-key-pair.sh "${FLAGS_INHERIT[@]}"
     src/bin/generate-module-for-trusted-keys.sh
 
     if "${DO_BUILD}"
@@ -89,16 +71,8 @@ function waitForDockerComposeReady() {
         # Build server executables from Go sources
         "${BIN}/nix-build.sh"
 
-        # Build docker images for presentation layer
-        "${SRC}/present/bin/npm-install-in-docker.sh"
-        "${SRC}/present/bin/build-in-docker.sh"
-        docker build -t "${DOCKER_REPOSITORY}/example-present:${EXAMPLE_IMAGE_VERSION}" src/present
-        EMPTY="${PROJECT}/target/empty-build-context"
-        mkdir -p "${EMPTY}"
-        docker build -t "${DOCKER_REPOSITORY}/example-present:${EXAMPLE_IMAGE_VERSION}-dev" -f src/present/Dockerfile-development "${EMPTY}"
-
         # Build docker images for proxy
-        docker build -t "${DOCKER_REPOSITORY}/example-proxy:${EXAMPLE_IMAGE_VERSION}" src/proxy
+        docker build -t "${DOCKER_REPOSITORY}/proxy:${IMAGE_VERSION}" src/proxy
 
         # Build docker image for Swagger UI
         docker build -t "${DOCKER_REPOSITORY}/grpc-swagger" src/swagger
@@ -106,14 +80,14 @@ function waitForDockerComposeReady() {
 
     (
         cd src/docker
-        docker-compose -p "${ENSEMBLE_NAME}" rm --stop --force
+        docker-compose -p "${ENSEMBLE_NAME}" rm --stop --force || true
     )
 
     if "${DO_CLOBBER}"
     then
-      docker volume rm -f example_axon-data
-      docker volume rm -f example_axon-eventdata
-      docker volume rm -f example_elastic-search-data
+      docker volume rm -f "${ENSEMBLE_NAME}_axon-data"
+      docker volume rm -f "${ENSEMBLE_NAME}_axon-eventdata"
+      docker volume rm -f "${ENSEMBLE_NAME}_elastic-search-data"
     fi
 
     src/docker/docker-compose-up.sh "${FLAGS_INHERIT[@]}" "$@"
