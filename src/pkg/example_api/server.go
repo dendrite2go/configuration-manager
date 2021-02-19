@@ -15,11 +15,11 @@ import (
 	authentication "github.com/dendrite2go/dendrite/src/pkg/authentication"
 	axon_utils "github.com/dendrite2go/dendrite/src/pkg/axon_utils"
 	axon_server "github.com/dendrite2go/dendrite/src/pkg/grpc/axon_server"
-	grpc_config "github.com/dendrite2go/dendrite/src/pkg/grpc/configuration"
+	grpc_config "github.com/dendrite2go/dendrite/src/pkg/grpc/dendrite_config"
 	trusted "github.com/dendrite2go/dendrite/src/pkg/trusted"
 	utils "github.com/dendrite2go/dendrite/src/pkg/utils"
 
-	grpc_example "github.com/dendrite2go/archetype-go-axon/src/pkg/grpc/example"
+	grpc_example "github.com/dendrite2go/archetype-go-axon/src/pkg/grpc/dendrite_config"
 )
 
 type GreeterServer struct {
@@ -44,7 +44,7 @@ func (s *GreeterServer) Authorize(_ context.Context, credentials *grpc_example.C
 	return &accessToken, nil
 }
 
-func (s *GreeterServer) ListTrustedKeys(_ *grpc_example.Empty, streamServer grpc_example.GreeterService_ListTrustedKeysServer) error {
+func (s *GreeterServer) ListTrustedKeys(_ *grpc_example.Empty, streamServer grpc_example.ConfigurationService_ListTrustedKeysServer) error {
 	trustedKey := grpc_example.PublicKey{}
 	for name, key := range trusted.GetTrustedKeys() {
 		trustedKey.Name = name
@@ -63,7 +63,7 @@ func (s *GreeterServer) SetPrivateKey(_ context.Context, request *grpc_example.P
 	return &empty, nil
 }
 
-func (s *GreeterServer) ChangeTrustedKeys(stream grpc_example.GreeterService_ChangeTrustedKeysServer) error {
+func (s *GreeterServer) ChangeTrustedKeys(stream grpc_example.ConfigurationService_ChangeTrustedKeysServer) error {
 	var status = grpc_example.Status{}
 	response := grpc_example.TrustedKeyResponse{}
 	nonce := make([]byte, 64)
@@ -120,7 +120,7 @@ func (s *GreeterServer) ChangeTrustedKeys(stream grpc_example.GreeterService_Cha
 	return errors.New("server: Change trusted keys: unexpected end of stream")
 }
 
-func (s *GreeterServer) ChangeCredentials(stream grpc_example.GreeterService_ChangeCredentialsServer) error {
+func (s *GreeterServer) ChangeCredentials(stream grpc_example.ConfigurationService_ChangeCredentialsServer) error {
 	for true {
 		credentials, e := stream.Recv()
 		if e != nil {
@@ -156,7 +156,7 @@ func (s *GreeterServer) SetProperty(_ context.Context, keyValue *grpc_example.Ke
 }
 
 func RegisterWithServer(grpcServer *grpc.Server, clientConnection *axon_utils.ClientConnection) {
-	grpc_example.RegisterGreeterServiceServer(grpcServer, &GreeterServer{clientConnection.Connection, clientConnection.ClientInfo})
+	grpc_example.RegisterConfigurationServiceServer(grpcServer, &GreeterServer{clientConnection.Connection, clientConnection.ClientInfo})
 }
 
 func toClientConnection(s *GreeterServer) *axon_utils.ClientConnection {

@@ -16,7 +16,6 @@ import (
 	utils "github.com/dendrite2go/dendrite/src/pkg/utils"
 
 	cache_utils "github.com/dendrite2go/archetype-go-axon/src/pkg/cache_utils"
-	example_api "github.com/dendrite2go/archetype-go-axon/src/pkg/example_api"
 	example_command "github.com/dendrite2go/archetype-go-axon/src/pkg/example_command"
 	example_trusted "github.com/dendrite2go/archetype-go-axon/src/pkg/trusted"
 )
@@ -67,6 +66,5 @@ func main() {
 }
 
 func registerWithServer(server *grpc.Server, conn *axon_utils.ClientConnection) {
-	example_api.RegisterWithServer(server, conn)
 	configuration_api.RegisterWithServer(server, conn)
 }

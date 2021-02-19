@@ -41,8 +41,8 @@
     fetch = {
       type = "git";
       url = "https://github.com/dendrite2go/dendrite";
-      rev = "v0.0.14";
-      sha256 = "0qws3g257cgf9wly4y0232kyy9y9ypxip3qvd8l97gc409sc9d3l";
+      rev = "v0.0.16";
+      sha256 = "03w31dd9b1znh4yz38s19qig8pfqfc2qj4msy6818slmgwvxh524";
     };
   }
   {

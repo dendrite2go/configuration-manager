@@ -3,7 +3,7 @@ module github.com/dendrite2go/archetype-go-axon
 go 1.13
 
 require (
-	github.com/dendrite2go/dendrite v0.0.14
+	github.com/dendrite2go/dendrite v0.0.16
 	github.com/elastic/go-elasticsearch/v7 v7.6.0
 	github.com/golang/protobuf v1.3.3
 	github.com/google/uuid v1.1.1
