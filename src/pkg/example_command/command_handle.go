@@ -26,6 +26,7 @@ func HandleCommands(host string, port int) *axon_utils.ClientConnection {
 	axon_utils.SubscribeCommand("RegisterTrustedKeyCommand", stream, clientInfo)
 	axon_utils.SubscribeCommand("RegisterKeyManagerCommand", stream, clientInfo)
 	axon_utils.SubscribeCommand("RegisterCredentialsCommand", stream, clientInfo)
+	axon_utils.SubscribeCommand("RegisterUnencryptedCredentialsCommand", stream, clientInfo)
 	axon_utils.SubscribeCommand("ChangePropertyCommand", stream, clientInfo)
 
 	go axon_utils.CommandWorker(stream, clientConnection, commandDispatch)
@@ -41,6 +42,8 @@ func commandDispatch(command *axon_server.Command, stream axon_server.CommandSer
 		return trusted.HandleRegisterKeyManagerCommand(command, clientConnection)
 	} else if commandName == "RegisterCredentialsCommand" {
 		return authentication.HandleRegisterCredentialsCommand(command, clientConnection)
+	} else if commandName == "RegisterUnencryptedCredentialsCommand" {
+		return authentication.HandleRegisterUnencryptedCredentialsCommand(command, clientConnection)
 	} else if commandName == "ChangePropertyCommand" {
 		return configuration_command.HandleChangePropertyCommand(command, clientConnection)
 	} else {
